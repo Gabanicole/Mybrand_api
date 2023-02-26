@@ -25,7 +25,7 @@ const server = async () => {
             await mongoose.connect(process.env.DEV_DB, { useNewUrlParser: true })
         } else if (mode === "test") {
             await mongoose.connect(process.env.TEST_DB, { useNewUrlParser: true })
-        } else if (mode === "production") {
+        } else if (mode === "prod") {
             await mongoose.connect(process.env.DB, { useNewUrlParser: true })
         }
 
