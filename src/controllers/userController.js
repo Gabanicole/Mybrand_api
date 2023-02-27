@@ -20,7 +20,7 @@ export class UserController {
             //     res.status(409).json({ status: 409, message: "User with this email already exist. use different one" })
             // }else{
                 const user = await new User({
-                    name: req.body.name,
+                    // name: req.body.name,
                     username: req.body.username,
                     password: hashPassword(req.body.password),
                     email: req.body.email
