@@ -1,11 +1,11 @@
 {
-  "name": "server",
+  "name": "mybrand_api",
   "version": "1.0.0",
   "description": "Brand_backend",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "build": "babel src -d dist",
-    "start": "npm run start",
+    "start": "npm start",
     "dev": "better-npm-run dev",
     "test": "better-npm-run test"
   },
