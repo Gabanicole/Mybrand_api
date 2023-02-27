@@ -1,5 +1,5 @@
 import User from "../models/user";
-import { UserServices } from "../services/userServices";
+// import { UserServices } from "../services/userServices";
 import { generateToken } from "../helpers/jwtFunctions.js"
 import { comparePassword, hashPassword } from "../helpers/passwordSecurity"
 export class UserController {
@@ -13,21 +13,22 @@ export class UserController {
     async createUser(req, res, next) {
 
         try {
-            const exit = await UserServices.userExist(req.body.email)
+            // const exit = await UserServices.userExist(req.body.email)
             console.log(req.body.email);
-            if (exit) {
-                console.log(exit);
-                res.status(409).json({ status: 409, message: "User with this email already exist. use different one" })
-            }else{
+            // if (exit) {
+            //     console.log(exit);
+            //     res.status(409).json({ status: 409, message: "User with this email already exist. use different one" })
+            // }else{
                 const user = await new User({
                     name: req.body.name,
                     username: req.body.username,
                     password: hashPassword(req.body.password),
                     email: req.body.email
                 })
-                const createdUser = await UserServices.createUser(user)
-                res.status(201).send(createdUser)
-            }
+                await user.save()
+                //const createdUser = await UserServices.createUser(user)
+                res.status(201).json(user)
+            //}
             
         } catch (error) {
             console.log(error);
